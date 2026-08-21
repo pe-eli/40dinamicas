@@ -1,0 +1,3 @@
+"use client";
+import { useState } from "react";
+export function FAQ({ items }: { items: string[][] }) { const [open, setOpen] = useState<number | null>(0); return <div className="faq-list">{items.map(([question, answer], index) => { const expanded = open === index; return <div className={`faq-item${expanded ? " open" : ""}`} key={question}><h3><button type="button" aria-expanded={expanded} aria-controls={`faq-panel-${index}`} id={`faq-button-${index}`} onClick={() => setOpen(expanded ? null : index)}><span>{question}</span><b aria-hidden="true">+</b></button></h3><div className="faq-answer" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-button-${index}`} hidden={!expanded}><p>{answer}</p></div></div>; })}</div>; }
