@@ -17,20 +17,23 @@ test("renders the complete sales page with product metadata", async () => {
   assert.match(html, /<title>40 Dinâmicas para Festas Infantis sem Eletrônicos<\/title>/);
   assert.match(html, /Transforme a festa em uma/);
   assert.match(html, /id="oferta"/);
-  assert.match(html, /R\$ 19,90/);
+  assert.match(html, /R\$ 10,00/);
   assert.match(html, /og:image/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Lorem Ipsum/i);
 });
 
-test("keeps calls to action safe and the FAQ accessible", async () => {
-  const [page, faq, config] = await Promise.all([
+test("keeps calls to action tracked and the FAQ accessible", async () => {
+  const [page, faq, config, checkoutButton] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/FAQ.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/offer-config.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/CheckoutButton.tsx", import.meta.url), "utf8"),
   ]);
-  assert.match(config, /NEXT_PUBLIC_CHECKOUT_URL/);
-  assert.match(config, /\|\| "#oferta"/);
-  assert.match(page, /href=\{checkoutUrl\}/);
+  assert.match(config, /https:\/\/pay\.cakto\.com\.br\/okev54k_1055057/);
+  assert.match(page, /<CheckoutButton/);
+  assert.match(checkoutButton, /href=\{checkoutUrl\}/);
+  assert.match(checkoutButton, /"InitiateCheckout"/);
+  assert.match(checkoutButton, /value: OFFER\.priceValue/);
   assert.match(faq, /aria-expanded=\{expanded\}/);
   assert.match(faq, /aria-controls=/);
   assert.match(faq, /role="region"/);
