@@ -82,8 +82,8 @@ h1 em { color: var(--coral); font-style: normal; }
 .pain-card p, .extras-grid p { margin: 0; color: var(--soft); line-height: 1.58; }
 .audience-section, .games-section, .extras-section, .guarantee-section, .final-section { background: white; }
 .split-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 6rem; align-items: center; }
-.split-layout .section-title, .faq-layout .section-title, .value-layout .section-title { margin: 0; text-align: left; }
-.split-layout .section-title > span, .faq-layout .section-title > span, .value-layout .section-title > span { margin-left: 0; }
+.split-layout .section-title, .faq-layout .section-title { margin: 0; text-align: left; }
+.split-layout .section-title > span, .faq-layout .section-title > span { margin-left: 0; }
 .side-copy { color: var(--soft); font-size: 1.05rem; line-height: 1.7; }
 .check-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0; padding: 1.5rem; border-radius: 28px; background: #e8f6f1; list-style: none; }
 .check-panel li { display: flex; gap: .75rem; padding: 1rem; border-radius: 14px; background: white; font-weight: 800; line-height: 1.4; }
@@ -100,17 +100,22 @@ h1 em { color: var(--coral); font-style: normal; }
 .extras-grid article { padding: 1.4rem; border: 1px solid #efe6d8; border-radius: 20px; background: #fffaf0; }
 .extras-grid article > span { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 14px; background: var(--yellow); font: 900 1rem var(--font-display); }
 .extras-grid h3 { font-size: 1.1rem; }
+.bonus-price { display: flex; align-items: center; justify-content: space-between; gap: .65rem; margin-top: 1.15rem; padding-top: .9rem; border-top: 1px solid #e8decc; }
+.bonus-price s { color: #7a8995; font-size: .82rem; font-weight: 800; }
+.bonus-price strong { padding: .32rem .58rem; border-radius: 999px; background: #dff4ed; color: var(--aqua-dark); font-size: .82rem; text-transform: uppercase; }
+.bonus-savings { width: max-content; max-width: 100%; margin: 2rem auto 0; padding: .85rem 1.2rem; border: 2px dashed #e7a921; border-radius: 999px; background: #fff4c7; color: var(--navy); text-align: center; font: 900 1.08rem var(--font-display); }
+.bonus-savings span { color: var(--coral); }
 
-.value-section { background: var(--coral); color: white; }
-.value-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.value-layout .section-title { margin-bottom: 1.5rem; }
-.value-layout > div > p { max-width: 530px; margin-bottom: 2rem; color: white; font-size: 1.08rem; line-height: 1.7; }
-.value-card { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border-radius: 24px; background: white; color: var(--navy); box-shadow: 0 25px 50px rgba(110,36,24,.25); }
-.value-card > div { padding: 1.8rem; } .value-card > div + div { background: #dff4ed; }
-.value-card span { font: 900 1.15rem var(--font-display); }
-.value-card p { position: relative; padding-left: 1.2rem; color: var(--soft); font-size: .88rem; }
-.value-card p::before { content: "×"; position: absolute; left: 0; color: var(--coral); font-weight: 1000; }
-.value-card > div + div p::before { content: "✓"; color: var(--aqua-dark); }
+.testimonials-section { background: #eaf7f3; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.testimonial-card { display: flex; min-height: 310px; flex-direction: column; padding: 1.7rem; border: 1px solid #cce7df; border-radius: 24px; background: white; box-shadow: 0 14px 35px rgba(22,50,79,.07); }
+.testimonial-stars { color: #e9ad21; font-size: 1.05rem; letter-spacing: .16rem; }
+.testimonial-card blockquote { margin: 1.15rem 0 1.6rem; color: #40586e; font-size: 1.02rem; line-height: 1.7; }
+.testimonial-author { display: flex; align-items: center; gap: .8rem; margin-top: auto; background: transparent; color: var(--navy); }
+.testimonial-author > span { display: grid; width: 48px; height: 48px; flex: 0 0 48px; place-items: center; border-radius: 50%; background: var(--coral); color: white; font: 900 .82rem var(--font-display); }
+.testimonial-author strong, .testimonial-author small { display: block; }
+.testimonial-author strong { font: 900 1rem var(--font-display); }
+.testimonial-author small { margin-top: .18rem; color: var(--soft); font-size: .76rem; }
 
 .offer-section { background: #fff4df; }
 .offer-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 5rem; align-items: center; }
@@ -165,6 +170,8 @@ footer { background: #10283c; color: white; }
   .extras-grid { grid-template-columns: repeat(3,1fr); }
   .offer-wrap { gap: 2.5rem; }
   .faq-layout { gap: 3rem; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .testimonial-card:last-child { grid-column: 1 / -1; min-height: auto; }
 }
 @media (max-width: 820px) {
   .section { padding: 5rem 0; }
@@ -172,9 +179,9 @@ footer { background: #10283c; color: white; }
   .hero-copy { display: flex; flex-direction: column; align-items: center; }
   .hero-benefits { justify-content: center; }
   .mockup-stage { min-height: 490px; }
-  .split-layout, .value-layout, .offer-wrap, .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
-  .split-layout .section-title, .faq-layout .section-title, .value-layout .section-title { text-align: center; }
-  .split-layout .section-title > span, .faq-layout .section-title > span, .value-layout .section-title > span { margin-inline: auto; }
+  .split-layout, .offer-wrap, .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .split-layout .section-title, .faq-layout .section-title { text-align: center; }
+  .split-layout .section-title > span, .faq-layout .section-title > span { margin-inline: auto; }
   .side-copy { text-align: center; }
   .extras-grid { grid-template-columns: repeat(2,1fr); }
   .offer-visual { display: none; }
@@ -187,7 +194,9 @@ footer { background: #10283c; color: white; }
   .container { width: min(100% - 2rem,1120px); }
   .section { padding: 4.2rem 0; }
   .section-title { margin-bottom: 2.2rem; }
-  .four-grid, .games-grid, .check-panel, .extras-grid, .value-card, .offer-card ul, .guarantee-card { grid-template-columns: 1fr; }
+  .four-grid, .games-grid, .check-panel, .extras-grid, .offer-card ul, .guarantee-card { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial-card, .testimonial-card:last-child { grid-column: auto; min-height: auto; }
   .check-panel { padding: 1rem; }
   .offer-card { padding: 1.5rem; box-shadow: 6px 6px 0 var(--aqua); }
   .guarantee-card { text-align: center; }
